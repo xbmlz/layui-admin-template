@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Quick Start - Layui</title>
-    <link
-      href="//cdnjs.cloudflare.com/ajax/libs/layui/2.9.14/css/layui.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- HTML Content -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/layui/2.9.14/layui.js"></script>
-    <script>
-      // Usage
-      layui.use(function () {
-        var layer = layui.layer;
-        // Welcome
-        layer.msg("Hello World", { icon: 6 });
-      });
-    </script>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick Start - Layui</title>
+  <link href="/public/assets/layui/css/layui.css" rel="stylesheet" />
+  <link href="/public/assets/css/index.css" rel="stylesheet" />
+</head>
+
+<body class="layui-layout-body">
+  <!-- HTML Content -->
+  <div id="app" class="layui-layout layui-layout-admin">
+    <!-- Layout Header -->
+    <div class="layui-header app-header">
+      <!-- Logo -->
+      <div class="layui-hide-xs app-logo">
+        <a class="logo" href="/">
+          Layui Admin
+        </a>
+      </div>
+      <!-- Left Menu -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+          <a href="#" class="layui-icon layui-icon-shrink-right"></a>
+        </li>
+      </ul>
+      <!-- Right Menu -->
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
+          <a href="javascript:;">
+            <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
+            tester
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">Your Profile</a></dd>
+            <dd><a href="javascript:;">Settings</a></dd>
+            <dd><a href="javascript:;">Sign out</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Layout Sidebar -->
+    <div class="layui-side">
+      <div class="layui-side-scroll">Sidebar</div>
+    </div>
+
+    <!-- Layout Content -->
+    <div class="layui-body">Content</div>
+
+    <!-- Layout Footer -->
+    <div class="layui-footer">Footer</div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/public/assets/layui/layui.js"></script>
+  <script src="/public/assets/index.js"></script>
+  <script>
+    layui.use(["app"]);
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,33 @@
+:root {
+  --bg-color: #fff;
+  --c-border: #e5e6eb;
+  --c-text: #333;
+}
+
+:root.dark {
+  --bg-color: #212121;
+  --c-border: #444;
+  --c-text: #fff;
+}
+
+.app-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--bg-color) !important;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.app-header .layui-nav .layui-nav-item a {
+    color: var(--c-text) !important;
+}
+
+.app-logo {
+  position: absolute;
+  width: 240px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
