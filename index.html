@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quick Start - Layui</title>
   <link rel="stylesheet" href="./public/assets/layui/css/layui.css" />
-  <link rel="stylesheet" href="" id="layui-dark-theme" />
+  <link rel="stylesheet" href="" id="layui-dark-css" />
   <link rel="stylesheet" href="./public/assets/css/index.css" />
   <script>
     ; (function () {
@@ -16,7 +16,7 @@
       const setting = localStorage.getItem('layui-color-scheme') || 'auto'
       if (setting === 'dark' || (prefersDark && setting !== 'light')) {
         document.documentElement.classList.toggle('dark', true)
-        document.getElementById('layui-dark-theme').setAttribute('href', './public/assets/css/layui-theme-dark.css')
+        document.getElementById('layui-dark-css').setAttribute('href', './public/assets/css/layui-theme-dark.css')
       }
     })()
   </script>
@@ -26,22 +26,23 @@
   <!-- HTML Content -->
   <div id="app" class="layui-layout layui-layout-admin">
     <!-- Layout Header -->
-    <div class="layui-header">
+    <header class="layui-header">
       <!-- Logo -->
       <div class="layui-logo layui-hide-xs">Layui Admin</div>
       <!-- Left Menu -->
       <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
-          <a href="#" class="layui-icon layui-icon-shrink-right"></a>
-        </li>
+        <li class="collapse layui-nav-item"><a href="#" class="layui-icon layui-icon-shrink-right" style="font-size: 16px;"></a></li>
+        <li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1" style="font-size: 16px;"></a></li>
       </ul>
       <!-- Right Menu -->
       <ul class="layui-nav layui-layout-right">
         <!-- Toggle Dark Mode -->
-        <li class="layui-nav-item" lay-header-event="toggleDarkMode">
-          <button class="layui-btn layui-btn-primary layui-btn-sm layui-icon-btn" id="toggle-dark-mode">
-            <i id="dark-mode-icon" class="layui-icon layui-icon-light"></i>
-          </button>
+        <li class="layui-nav-item" lay-header-event="toggleDark">
+          <a href="#" id="dark-mode-icon" class="layui-icon layui-icon-light" style="font-size: 16px;"></a>
+        </li>
+
+        <li class="layui-nav-item" lay-header-event="">
+          <a href="#" class="layui-icon layui-icon-fonts-clear" style="font-size: 16px;"></a>
         </li>
 
         <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
@@ -56,43 +57,43 @@
           </dl>
         </li>
       </ul>
-    </div>
+    </header>
 
     <!-- Layout Sidebar -->
-    <div class="layui-side">
+    <aside class="layui-side layui-side-menu">
       <div class="layui-side-scroll">
-        <!-- Logo -->
-        <!-- <div class="layui-logo layui-bg-black">Layui Admin</div> -->
-
         <!-- Sider Menu -->
         <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="nav-side" lay-unselect>
-          <li class="layui-nav-item layui-nav-itemed">
-            <a class="" href="javascript:;">基本元素<i class="layui-icon layui-icon-down layui-nav-more"></i></a>
+          <li data-name="home" class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" lay-tips="主页" lay-direction="2">
+              <i class="layui-icon layui-icon-home"></i>
+              <cite>主页</cite>
+              <i class="layui-icon layui-icon-down layui-nav-more"></i></a>
             <dl class="layui-nav-child">
-              <dd class="layui-this"><a data-path="view/button" href="javascript:;">按钮</a></dd>
-              <dd><a data-path="view/element.nav" href="javascript:;">导航/面包屑</a></dd>
-              <dd><a data-path="view/form" href="javascript:;">表单</a></dd>
-              <dd><a data-path="view/menu" href="javascript:;">基础菜单</a></dd>
-              <dd><a data-path="view/element.tab" href="javascript:;">选项卡</a></dd>
-              <dd><a data-path="view/progress" href="javascript:;">进度条</a></dd>
-              <dd><a data-path="view/panel" href="javascript:;">面板</a></dd>
-              <dd><a data-path="view/badge" href="javascript:;">徽章</a></dd>
-              <dd><a data-path="view/timeline" href="javascript:;">时间线</a></dd>
-              <dd><a data-path="view/table-static" href="javascript:;">静态表格</a></dd>
-              <dd><a data-path="view/auxiliar" href="javascript:;">辅助元素</a></dd>
+              <dd data-name="console" class="layui-this">
+                <a lay-href="home/console.html">控制台</a>
+              </dd>
+              <dd data-name="console">
+                <a lay-href="home/homepage1.html">主页一</a>
+              </dd>
+              <dd data-name="console">
+                <a lay-href="home/homepage2.html">主页二</a>
+              </dd>
             </dl>
           </li>
         </ul>
       </div>
-    </div>
+    </aside>
 
     <!-- Layout Content -->
-    <div class="layui-body">Content</div>
+    <main class="layui-body">
+      <div id="page-content"></div>
+    </main>
 
     <!-- Layout Footer -->
-    <div class="layui-footer">
+    <footer class="layui-footer">
       Copyright ©2024 Layui Admin All Rights Reserved.
-    </div>
+    </footer>
   </div>
 
   <!-- JavaScript -->

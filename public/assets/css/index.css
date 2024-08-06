@@ -6,6 +6,7 @@
 html {
   --bg-base: #fff;
   --bg-body: #f2f3f5;
+  --bg-nav-active: rgb(242, 243, 245);
   --c-border-base: #eee;
   --c-text-base: #4e5969;
   --c-primary: #16baaa;
@@ -14,9 +15,22 @@ html {
 html.dark {
   --bg-base: #17171a;
   --bg-body: rgba(255, 255, 255, 0.08);
+  --bg-nav-active: rgba(255, 255, 255, 0.08);
   --c-border-base: #2e2e30;
   --c-text-base: #c5c5c5;
   --c-primary: #16baaa;
+}
+
+html,
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, PingFang SC,
+    Hiragino Sans GB, noto sans, Microsoft YaHei, Helvetica Neue, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+}
+
+html, body, .layui-layout {
+  height: 100%;
 }
 
 .layui-layout-admin .layui-header {
@@ -52,10 +66,6 @@ html.dark {
   color: var(--c-text-base);
 }
 
-.layui-layout-admin .layui-header a:hover {
-  color: var(--c-primary);
-}
-
 .layui-header .layui-layout-right .layui-badge-dot {
   margin-left: 0;
 }
@@ -81,6 +91,12 @@ html.dark {
   bottom: auto;
 }
 
+.layui-nav .layui-nav-item a:hover,
+.layui-nav .layui-this a {
+  color: var(--c-primary) !important;
+  background-color: transparent !important;
+}
+
 .layui-layout-admin .layui-logo {
   width: var(--side-width);
   box-shadow: none;
@@ -104,30 +120,38 @@ html.dark {
 
 .layui-nav.layui-nav-tree {
   width: var(--side-width);
+  padding: 4px 8px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item a {
+  padding-left: 45px;
+  padding-right: 30px;
+}
+
+.layui-side-menu .layui-nav > .layui-nav-item .layui-icon:first-child {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  margin-top: -19px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-itemed > .layui-nav-child {
+  padding: 5px 0;
+}
+
+[lay-href],
+[lay-tips],
+[layadmin-event] {
+  cursor: pointer;
 }
 
 .layui-layout-admin .layui-footer {
   box-shadow: none;
   background-color: var(--bg-base);
-  border-top: 1px solid var(--c-border-base);
   padding: 10px;
-  text-align: center;
   height: 20px;
   line-height: 20px;
-}
-
-.layui-icon-btn {
-  width: 32px;
-  height: 32px;
-  padding: 0;
   text-align: center;
-  border-radius: 50%;
-}
-
-.layui-icon-btn i {
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--c-text-base);
 }
 
 .layui-nav {
@@ -137,6 +161,7 @@ html.dark {
 
 .layui-nav .layui-nav-item a {
   color: var(--c-text-base) !important;
+  font-weight: 500;
 }
 
 .layui-nav-tree .layui-nav-child {
@@ -148,12 +173,28 @@ html.dark {
 .layui-nav-tree .layui-this,
 .layui-nav-tree .layui-this > a,
 .layui-nav-tree .layui-this > a:hover {
-  color: #fff !important;
-  background-color: var(--c-primary) !important;
+  color: var(--c-primary) !important;
+  background-color: var(--bg-nav-active) !important;
+  border-radius: 2px;
+}
+
+.layui-nav-itemed > a,
+.layui-nav-tree .layui-nav-title a,
+.layui-nav-tree .layui-nav-title a:hover {
+  color: var(--c-primary) !important;
 }
 
 .layui-layout-admin .layui-body {
-  padding: 14px;
-  background-color: var(--bg-body);
   top: var(--header-height);
+  height: calc(100% - var(--header-height));
+}
+
+.layui-side .layui-nav-tree .layui-nav-bar {
+  display: none;
+}
+
+#page-content {
+  position: relative;
+  height: 100%;
+  background-color: var(--bg-body);
 }

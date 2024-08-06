@@ -1,9 +1,11 @@
 layui.define([], function (exports) {
   console.log('dark module loaded');
 
-  const { $, util } = layui;
+  const { $ } = layui;
 
-  const darkThemeLink = './public/assets/css/layui-theme-dark.css';
+  const darkCSS = './public/assets/css/layui-theme-dark.css';
+  const CSS_DISABLE_TRANS =
+    '*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}';
 
   const prefersDark =
     window.matchMedia &&
@@ -21,7 +23,7 @@ layui.define([], function (exports) {
       const setting = localStorage.getItem('layui-color-scheme') || 'auto';
       if (setting === 'auto') {
         document.documentElement.classList.toggle('dark', e.matches);
-        $('#layui-dark-theme').attr('href', e.matches ? darkThemeLink : '');
+        $('#layui-dark-css').attr('href', e.matches ? darkCSS : '');
         $('#dark-mode-icon').attr(
           'class',
           e.matches
@@ -31,23 +33,33 @@ layui.define([], function (exports) {
       }
     });
 
-  util.event('lay-header-event', {
-    toggleDarkMode: function () {
-      let isDark = document.documentElement.classList.contains('dark');
-      isDark = !isDark;
-      document.documentElement.classList.toggle('dark', isDark);
-      $('#dark-mode-icon').attr(
-        'class',
-        isDark ? 'layui-icon layui-icon-light' : 'layui-icon layui-icon-moon'
-      );
-      $('#layui-dark-theme').attr('href', isDark ? darkThemeLink : '');
-      if (prefersDark === isDark) {
-        localStorage.setItem('layui-color-scheme', 'auto');
-      } else {
-        localStorage.setItem('layui-color-scheme', isDark ? 'dark' : 'light');
-      }
-    },
-  });
+  function toggleDark() {
+    let style = document.createElement('style');
+    style.appendChild(document.createTextNode(CSS_DISABLE_TRANS));
+    document.head.appendChild(style);
 
-  exports('dark', {});
+    let isDark = document.documentElement.classList.contains('dark');
+    isDark = !isDark;
+
+    $('#dark-mode-icon').attr(
+      'class',
+      isDark ? 'layui-icon layui-icon-light' : 'layui-icon layui-icon-moon'
+    );
+
+    $('#layui-dark-css').attr('href', isDark ? darkCSS : '');
+    document.documentElement.classList.toggle('dark', isDark);
+
+    if (prefersDark === isDark) {
+      localStorage.setItem('layui-color-scheme', 'auto');
+    } else {
+      localStorage.setItem('layui-color-scheme', isDark ? 'dark' : 'light');
+    }
+
+    getComputedStyle(style).opacity;
+    document.head.removeChild(style);
+  }
+
+  exports('dark', {
+    toggleDark: toggleDark,
+  });
 });
