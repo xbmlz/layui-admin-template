@@ -12,4 +12,5 @@ layui.config({
 	version: '1.0.0',
 }).extend({
 	app: 'app',
+	dark: 'dark',
 }).use([], function () { });

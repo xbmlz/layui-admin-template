@@ -6,25 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quick Start - Layui</title>
   <link rel="stylesheet" href="/public/assets/layui/css/layui.css" />
-  <link rel="stylesheet" href="/public/assets/css/layui-theme-dark.css">
-  <link href="/public/assets/css/index.css" rel="stylesheet" />
+  <link rel="stylesheet" href="" id="layui-dark-theme" />
+  <link rel="stylesheet" href="/public/assets/css/index.css" />
   <script>
-    // ; (function () {
-    //   const prefersDark =
-    //     window.matchMedia &&
-    //     window.matchMedia('(prefers-color-scheme: dark)').matches
-    //   const setting = localStorage.getItem('layui-color-scheme') || 'auto'
-    //   if (setting === 'dark' || (prefersDark && setting !== 'light'))
-    //     document.documentElement.classList.toggle('dark', true)
-    // })()
+    ; (function () {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      const setting = localStorage.getItem('layui-color-scheme') || 'auto'
+      if (setting === 'dark' || (prefersDark && setting !== 'light')) {
+        document.documentElement.classList.toggle('dark', true)
+        document.getElementById('layui-dark-theme').setAttribute('href', '/public/assets/css/layui-theme-dark.css')
+      }
+    })()
   </script>
 </head>
 
 <body class="layui-layout-body">
   <!-- HTML Content -->
-  <div id="app" class="app-layout layui-layout layui-layout-admin">
+  <div id="app" class="layui-layout layui-layout-admin">
     <!-- Layout Header -->
-    <div class="app-layout-header layui-header">
+    <div class="layui-header">
       <!-- Left Menu -->
       <ul class="layui-nav layui-layout-left">
         <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
@@ -33,6 +35,13 @@
       </ul>
       <!-- Right Menu -->
       <ul class="layui-nav layui-layout-right">
+        <!-- Toggle Dark Mode -->
+        <li class="layui-nav-item" lay-header-event="toggleDarkMode">
+          <a href="javascript:;" id="toggle-dark-mode">
+            <i id="dark-mode-icon" class="layui-icon layui-icon-light" style="font-size: 20px;"></i>
+          </a>
+        </li>
+
         <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
           <a href="javascript:;">
             <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
@@ -48,13 +57,13 @@
     </div>
 
     <!-- Layout Sidebar -->
-    <div class="app-layout-side layui-side">
+    <div class="layui-side">
       <div class="layui-side-scroll">
         <!-- Logo -->
         <div class="layui-logo layui-bg-black">Layui Admin</div>
 
         <!-- Sider Menu -->
-        <ul class="app-nav-tree layui-nav layui-nav-tree" lay-shrink="all" lay-filter="nav-side" lay-unselect>
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="nav-side" lay-unselect>
           <li class="layui-nav-item layui-nav-itemed">
             <a class="" href="javascript:;">基本元素<i class="layui-icon layui-icon-down layui-nav-more"></i></a>
             <dl class="layui-nav-child">
@@ -76,10 +85,10 @@
     </div>
 
     <!-- Layout Content -->
-    <div class="app-body layui-body">Content</div>
+    <div class="layui-body">Content</div>
 
     <!-- Layout Footer -->
-    <div class="app-footer layui-footer">Footer</div>
+    <div class="layui-footer">Footer</div>
   </div>
 
   <!-- JavaScript -->

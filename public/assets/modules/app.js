@@ -1,7 +1,7 @@
-layui.define([], function (exports) {
-    console.log('app.js');
+layui.define(['dark'], function (exports) {
+  console.log('app module loaded');
 
-    const { element } = layui;
 
-    exports('app', {});
+
+  exports('app', {});
 });
