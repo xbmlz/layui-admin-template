@@ -1,7 +1,9 @@
 layui.define([], function (exports) {
   console.log('dark module loaded');
 
-  const { element, $, util } = layui;
+  const { $, util } = layui;
+
+  const darkThemeLink = './public/assets/css/layui-theme-dark.css';
 
   const prefersDark =
     window.matchMedia &&
@@ -19,10 +21,7 @@ layui.define([], function (exports) {
       const setting = localStorage.getItem('layui-color-scheme') || 'auto';
       if (setting === 'auto') {
         document.documentElement.classList.toggle('dark', e.matches);
-        $('#layui-dark-theme').attr(
-          'href',
-          e.matches ? '/public/assets/css/layui-theme-dark.css' : ''
-        );
+        $('#layui-dark-theme').attr('href', e.matches ? darkThemeLink : '');
         $('#dark-mode-icon').attr(
           'class',
           e.matches
@@ -41,12 +40,7 @@ layui.define([], function (exports) {
         'class',
         isDark ? 'layui-icon layui-icon-light' : 'layui-icon layui-icon-moon'
       );
-      $('#layui-dark-theme').attr(
-        'href',
-        isDark
-          ? '/public/assets/css/layui-theme-dark.css'
-          : ''
-      );
+      $('#layui-dark-theme').attr('href', isDark ? darkThemeLink : '');
       if (prefersDark === isDark) {
         localStorage.setItem('layui-color-scheme', 'auto');
       } else {

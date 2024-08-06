@@ -5,9 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quick Start - Layui</title>
-  <link rel="stylesheet" href="/public/assets/layui/css/layui.css" />
+  <link rel="stylesheet" href="./public/assets/layui/css/layui.css" />
   <link rel="stylesheet" href="" id="layui-dark-theme" />
-  <link rel="stylesheet" href="/public/assets/css/index.css" />
+  <link rel="stylesheet" href="./public/assets/css/index.css" />
   <script>
     ; (function () {
       const prefersDark =
@@ -16,7 +16,7 @@
       const setting = localStorage.getItem('layui-color-scheme') || 'auto'
       if (setting === 'dark' || (prefersDark && setting !== 'light')) {
         document.documentElement.classList.toggle('dark', true)
-        document.getElementById('layui-dark-theme').setAttribute('href', '/public/assets/css/layui-theme-dark.css')
+        document.getElementById('layui-dark-theme').setAttribute('href', './public/assets/css/layui-theme-dark.css')
       }
     })()
   </script>
@@ -27,6 +27,8 @@
   <div id="app" class="layui-layout layui-layout-admin">
     <!-- Layout Header -->
     <div class="layui-header">
+      <!-- Logo -->
+      <div class="layui-logo layui-hide-xs">Layui Admin</div>
       <!-- Left Menu -->
       <ul class="layui-nav layui-layout-left">
         <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
@@ -37,9 +39,9 @@
       <ul class="layui-nav layui-layout-right">
         <!-- Toggle Dark Mode -->
         <li class="layui-nav-item" lay-header-event="toggleDarkMode">
-          <a href="javascript:;" id="toggle-dark-mode">
-            <i id="dark-mode-icon" class="layui-icon layui-icon-light" style="font-size: 20px;"></i>
-          </a>
+          <button class="layui-btn layui-btn-primary layui-btn-sm layui-icon-btn" id="toggle-dark-mode">
+            <i id="dark-mode-icon" class="layui-icon layui-icon-light"></i>
+          </button>
         </li>
 
         <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
@@ -60,7 +62,7 @@
     <div class="layui-side">
       <div class="layui-side-scroll">
         <!-- Logo -->
-        <div class="layui-logo layui-bg-black">Layui Admin</div>
+        <!-- <div class="layui-logo layui-bg-black">Layui Admin</div> -->
 
         <!-- Sider Menu -->
         <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="nav-side" lay-unselect>

@@ -3,15 +3,31 @@
   --header-height: 50px;
 }
 
+html {
+  --bg-base: #fff;
+  --bg-body: #f2f3f5;
+  --c-border-base: #eee;
+  --c-text-base: #4e5969;
+  --c-primary: #16baaa;
+}
+
+html.dark {
+  --bg-base: #17171a;
+  --bg-body: rgba(255, 255, 255, 0.08);
+  --c-border-base: #2e2e30;
+  --c-text-base: #c5c5c5;
+  --c-primary: #16baaa;
+}
+
 .layui-layout-admin .layui-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--header-height);
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--c-border-base);
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--bg-base);
 }
 
 .layui-layout-admin .layui-layout-left {
@@ -25,10 +41,6 @@
   left: var(--side-width);
 }
 
-.layui-layout-admin .layui-layout-right {
-  padding: 0;
-}
-
 .layui-layout-admin .layui-header .layui-nav .layui-nav-item,
 .layui-layout-admin .layui-logo {
   height: var(--header-height);
@@ -37,11 +49,11 @@
 
 .layui-layout-admin .layui-header a,
 .layui-layout-admin .layui-header a cite {
-  color: #333;
+  color: var(--c-text-base);
 }
 
 .layui-layout-admin .layui-header a:hover {
-  color: #000;
+  color: var(--c-primary);
 }
 
 .layui-header .layui-layout-right .layui-badge-dot {
@@ -60,11 +72,87 @@
 .layui-layout-admin .layui-header .layui-nav .layui-this:after,
 .layui-layout-admin .layui-header .layui-nav-bar {
   height: 2px;
-  background-color: #20222a;
+  background-color: var(--bg-base);
 }
 
 .layui-header .layui-nav .layui-this:after,
 .layui-layout-admin .layui-header .layui-nav-bar {
   top: 0 !important;
   bottom: auto;
+}
+
+.layui-layout-admin .layui-logo {
+  width: var(--side-width);
+  box-shadow: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-right: 1px solid var(--c-border-base);
+}
+
+.layui-layout-admin .layui-side {
+  top: var(--header-height);
+  width: var(--side-width);
+}
+
+.layui-side {
+  border-right: 1px solid var(--c-border-base);
+}
+
+.layui-side-scroll {
+  width: var(--side-width);
+}
+
+.layui-nav.layui-nav-tree {
+  width: var(--side-width);
+}
+
+.layui-layout-admin .layui-footer {
+  box-shadow: none;
+  background-color: var(--bg-base);
+  border-top: 1px solid var(--c-border-base);
+  padding: 10px;
+  text-align: center;
+  height: 32px;
+}
+
+.layui-icon-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.layui-icon-btn i {
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--c-text-base);
+}
+
+.layui-nav {
+  background-color: var(--bg-base);
+  color: var(--c-text-base);
+}
+
+.layui-nav .layui-nav-item a {
+  color: var(--c-text-base) !important;
+}
+
+.layui-nav-tree .layui-nav-child {
+  background-color: var(--bg-base);
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a,
+.layui-nav-tree .layui-this,
+.layui-nav-tree .layui-this > a,
+.layui-nav-tree .layui-this > a:hover {
+  color: #fff !important;
+  background-color: var(--c-primary) !important;
+}
+
+.layui-layout-admin .layui-body {
+  padding: 14px;
+  background-color: var(--bg-body);
+  top: var(--header-height);
 }
